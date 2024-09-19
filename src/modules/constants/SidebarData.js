@@ -1,4 +1,4 @@
-import { AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import { AiOutlineShoppingCart, AiOutlineSkin } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import { LuUserCog2 } from "react-icons/lu";
@@ -9,7 +9,7 @@ const items = [
     key: "sub1",
     title: "Dashboard",
     exact: true,
-    icon: <AppstoreOutlined />,
+    icon: <AppstoreOutlined/>,
     permission: "list-overview",
   },
   {

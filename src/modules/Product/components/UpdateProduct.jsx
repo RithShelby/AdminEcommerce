@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { useCatagories } from "../../Categories/core/hook";
 import Select from "react-select";
+import {useSweetAlert} from "../../SweetAlert";
 
-const UpdateProduct = ({ uuid }) => {
+const UpdateProduct = ({ uuid,handleClose }) => {
+  const {SuccessAlert} = useSweetAlert();
   const { updateProductByUuid } = useProducts();
   const { getCategories } = useCatagories();
   const { listProduct, categoryOption } = useSelector(
@@ -31,6 +33,7 @@ const UpdateProduct = ({ uuid }) => {
         ...values,
         categoryId: values.categoryId.value,
       });
+      handleClose();
     },
   });
 
@@ -61,7 +64,12 @@ const UpdateProduct = ({ uuid }) => {
         options={categoryOption}
       />
       <div className="d-flex mt-4">
-        <button type="submit" className="btn btn-success m-auto w-50">
+        <button type="submit" className="btn btn-success m-auto w-50" onClick={() => {
+          SuccessAlert(); // Show the success alert
+          setTimeout(() => {
+            handleClose(); // Close after the alert
+          }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+        }}>
           Update Product
         </button>
       </div>

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./modules/redux/store";
 import { setUpAxios } from "./modules/helper/axiosHelper";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 setUpAxios();
 

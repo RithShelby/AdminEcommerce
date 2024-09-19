@@ -1,12 +1,15 @@
 import React from "react";
 import { GoTrash } from "react-icons/go";
-import { useProductItem, useProducts } from "../../core/hook";
+
 import { Link } from "react-router-dom";
+import {useSweetAlert} from "../../../SweetAlert";
 
 const ActionDeleteProductItem = ({ id }) => {
-  const { deleteProductItem } = useProductItem();
+  // const { deleteProductItem } = useProductItem();
+  const {ConfirmDelete} = useSweetAlert();
   const handleDeleteProductItem = () => {
-    deleteProductItem(id);
+    // deleteProductItem(id);
+    ConfirmDelete();
   };
 
   return (

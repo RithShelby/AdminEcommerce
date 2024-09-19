@@ -87,11 +87,11 @@ const useUsers = () => {
   };
   return {
     getUsers,
-    createUser,
+    // createUser,
     getAdminProfile,
-    updateUser,
-    toggleStatus,
-    getUserByUuid,
+    // updateUser,
+    // toggleStatus,
+    // getUserByUuid,
   };
 };
 

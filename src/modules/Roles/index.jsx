@@ -21,13 +21,13 @@ import { RoleColumn } from "./components/table/colRole";
 import { HasPermission } from "../components/HasPermission";
 import { PermissionModal } from "./components/permission/PermissionModal";
 import ShowRole from "./components/ShowRole";
+import {FilterComponent} from "../widget/SearchCustom";
 
 export const RoleContext = createContext();
 
 const Roles = () => {
   const { getRoles, getDeleteRole } = useRoles();
   const { listRole } = useSelector((state) => state.roles);
-  const { loadingList } = useSelector((state) => state.loading);
   const [searchRole, setSearchRole] = useState("");
   const [selectRole, setSelectRole] = useState("");
   const [showCreateRole, setShowCreateRole] = useState(false);
@@ -53,7 +53,7 @@ const Roles = () => {
   const handleCloseRoleById = () => {
     setShowRoleById(false);
   };
-  const handleRole = (e) => {
+  const handleSearchRole = (e) => {
     setSearchRole(e.target.value);
   };
   const handleSelectRole = (e) => {
@@ -85,55 +85,56 @@ const Roles = () => {
       <div className="my-5 py-5 mx-3">
         <h2 className="fw-bold">All Roles</h2>
         <hr />
-        <div className="row rounded-3">
-          <div className="col-sm-4 m-auto ">
-            <Search
-              value={searchRole}
-              onChange={handleRole}
-              placeholder={"Search Role"}
-            />
-          </div>
-          <div className="col-sm-5 m-auto my-3">
-            <SelectData value={selectRole} onchange={handleSelectRole}>
-              <option value="">All Roles</option>
-              {listRole.map((role, index) => (
-                <option key={index} value={role.id}>
-                  {role.name}
-                </option>
-              ))}
-            </SelectData>
-          </div>
-          <div className="col-sm-2 m-auto">
-            {" "}
-            <Link
-              onClick={() => handleShowCreateModal()}
-              className="btn btn-dark w-100 py-3"
-            >
-              <FiPlus />
-              New Roles
-            </Link>
-            {/* <HasPermission permission="create-role"></HasPermission> */}
-          </div>
-        </div>
+        <FilterComponent onFilter={handleSearchRole} filterText={searchRole} create={handleShowCreateModal} placeholder={"Search Role Here..."}/>
+        {/*<div className="row rounded-3">*/}
+        {/*  <div className="col-sm-4 m-auto ">*/}
+        {/*    <Search*/}
+        {/*      value={searchRole}*/}
+        {/*      onChange={handleRole}*/}
+        {/*      placeholder={"Search Role"}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*  <div className="col-sm-5 m-auto my-3">*/}
+        {/*    <SelectData value={selectRole} onchange={handleSelectRole}>*/}
+        {/*      <option value="">All Roles</option>*/}
+        {/*      {listRole.map((role, index) => (*/}
+        {/*        <option key={index} value={role.id}>*/}
+        {/*          {role.name}*/}
+        {/*        </option>*/}
+        {/*      ))}*/}
+        {/*    </SelectData>*/}
+        {/*  </div>*/}
+        {/*  <div className="col-sm-2 m-auto">*/}
+        {/*    {" "}*/}
+        {/*    <Link*/}
+        {/*      onClick={() => handleShowCreateModal()}*/}
+        {/*      className="btn btn-dark w-100 py-3"*/}
+        {/*    >*/}
+        {/*      <FiPlus />*/}
+        {/*      New Roles*/}
+        {/*    </Link>*/}
+        {/*    /!* <HasPermission permission="create-role"></HasPermission> *!/*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <TableGlobal columns={RoleColumn} data={filterRole} />
         <ModalComponent
           show={showCreateRole}
-          onHide={handleCloseCreateModal}
+          handleClose={handleCloseCreateModal}
           title="Create Role"
-          bodyModal={<CreateRole />}
+          bodyModal={<CreateRole handleClose={handleCloseCreateModal}  />}
         />
         <ModalComponent
           show={showUpdateRole}
-          onHide={handleCloseUpdateModal}
+          handleClose={handleCloseUpdateModal}
           title="Update Role"
-          bodyModal={<UpdateRole id={catchRole} />}
+          bodyModal={<UpdateRole id={catchRole} handleClose={handleCloseUpdateModal} />}
         />
-        <ModalComponent
-          show={showRoleById}
-          onHide={handleCloseRoleById}
-          title="Permissions Role"
-          bodyModal={<ShowRole id={catchRole} />}
-        />
+        {/*<ModalComponent*/}
+        {/*  show={showRoleById}*/}
+        {/*  onHide={handleCloseRoleById}*/}
+        {/*  title="Permissions Role"*/}
+        {/*  bodyModal={<ShowRole id={catchRole} />}*/}
+        {/*/>*/}
       </div>
     </RoleContext.Provider>
   );

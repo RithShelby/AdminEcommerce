@@ -4,7 +4,7 @@ import { useCatagories } from "../core/hook";
 import { useSelector } from "react-redux";
 import { useProductItem } from "../../ProductItem/core/hook";
 // import Select from "react-select";
-const UpdateCategories = ({ uuid, close }) => {
+const UpdateCategories = ({ uuid, handleClose }) => {
   const { updateCategories, getCategories, showCategoryById } = useCatagories();
   const { getProductItem } = useProductItem();
   const { listCategories } = useSelector((state) => state.categories);
@@ -37,7 +37,7 @@ const UpdateCategories = ({ uuid, close }) => {
     onSubmit: (values) => {
       updateCategories(uuid, values);
       console.log(values);
-      close(false);
+      handleClose();
     },
   });
 

@@ -84,8 +84,8 @@ const useProducts = () => {
   return {
     getProducts,
     // getCreateProducts,
-    // showProductByUuid,
-    // showUserReview,
+    showProductByUuid,
+    showUserReview,
     // updateProductByUuid,
     // deleteProduct,
     // uploadImage,

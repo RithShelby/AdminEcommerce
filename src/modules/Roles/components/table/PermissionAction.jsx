@@ -6,7 +6,7 @@ import { useRoles } from "../../core/hook";
 
 const PermissionAction = ({ id }) => {
   const { setCatchRole, setShowRoleById } = useContext(RoleContext);
-  const { getShowRoleById } = useRoles();
+  // const { getShowRoleById } = useRoles();
 
   const handlShowRoleById = () => {
     setCatchRole(id);
@@ -19,9 +19,9 @@ const PermissionAction = ({ id }) => {
     <Link onClick={handlShowRoleById}>
       {" "}
       <HiOutlineViewfinderCircle
-        onClick={() => {
-          getShowRoleById(id);
-        }}
+        // onClick={() => {
+        //   getShowRoleById(id);
+        // }}
         className="mx-2 icon_hover text-dark"
       />
     </Link>

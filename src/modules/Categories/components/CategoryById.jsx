@@ -8,6 +8,7 @@ import { RiPhoneFindLine } from "react-icons/ri";
 import { GoTrash } from "react-icons/go";
 import ModalComponent from "../../modalCreateAndUpdate/modalCom";
 import UpdateCategories from "./UpdateCategories";
+import ActionCell from "../../widget/ActionCell";
 
 const CategoryById = () => {
   const { uuid } = useParams();
@@ -66,17 +67,18 @@ const CategoryById = () => {
               : "Loading"}
           </td>
           <td className="d-flex">
-            <Link to="#" className="nav-link">
-              <AiTwotoneEdit className=" icon_hover" />
-            </Link>
-            <Link to="#" className="nav-link">
-              <GoTrash
-                className="icon_hover "
-                onClick={() => {
-                  categoriesDelete(listCategoriesById.uuid, "status");
-                }}
-              />
-            </Link>
+            <ActionCell/>
+            {/*<Link to="#" className="nav-link">*/}
+            {/*  <AiTwotoneEdit className=" icon_hover" />*/}
+            {/*</Link>*/}
+            {/*<Link to="#" className="nav-link">*/}
+            {/*  <GoTrash*/}
+            {/*    className="icon_hover "*/}
+            {/*    onClick={() => {*/}
+            {/*      categoriesDelete(listCategoriesById.uuid, "status");*/}
+            {/*    }}*/}
+            {/*  />*/}
+            {/*</Link>*/}
           </td>
         </tr>
       </tbody>

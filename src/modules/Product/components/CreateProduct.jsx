@@ -6,9 +6,12 @@ import { useCatagories } from "../../Categories/core/hook";
 import UploadImage from "./UploadImage";
 import "../../../assets/css/App.css";
 import Select from "react-select";
+import {useSweetAlert} from "../../SweetAlert";
+import UploadFile from "../../widget/UploadFile";
 
-const CreateProduct = () => {
+const CreateProduct = ({handleClose}) => {
   const { getCreateProducts, uploadImage } = useProducts();
+  const {SuccessAlert,ConfirmDelete} = useSweetAlert();
   const { getCategories } = useCatagories();
   const { listProduct, categoryOption } = useSelector(
     (state) => state.products
@@ -35,6 +38,7 @@ const CreateProduct = () => {
         categoryId: values.category.value,
         category: undefined,
       });
+      handleClose();
     },
   });
   // console.log(image);
@@ -76,28 +80,34 @@ const CreateProduct = () => {
             className=" w-75 my-4 m-auto"
             options={categoryOption}
           />
-          <input
-            type="file"
-            name="image"
-            className="form-control w-75 my-4 m-auto py-3"
-            onChange={onFileChange}
-          />
-          <div className=" d-flex justify-content-center flex-column align-items-center">
-            {/* <input
-                    type="file"
-                    value={createFormik.values.image || ""}
-                    name="image"
-                    className="input-field"
-                    onChange={(e) => {
-                      createFormik.handleChange(e);
-                      onFileChange(e);
-                    }}
-                  /> */}
-            <UploadImage />
-          </div>
+          <UploadFile/>
+          {/*<input*/}
+          {/*  type="file"*/}
+          {/*  name="image"*/}
+          {/*  className="form-control w-75 my-4 m-auto py-3"*/}
+          {/*  onChange={onFileChange}*/}
+          {/*/>*/}
+          {/*<div className=" d-flex justify-content-center flex-column align-items-center">*/}
+          {/*  /!* <input*/}
+          {/*          type="file"*/}
+          {/*          value={createFormik.values.image || ""}*/}
+          {/*          name="image"*/}
+          {/*          className="input-field"*/}
+          {/*          onChange={(e) => {*/}
+          {/*            createFormik.handleChange(e);*/}
+          {/*            onFileChange(e);*/}
+          {/*          }}*/}
+          {/*        /> *!/*/}
+          {/*  <UploadImage />*/}
+          {/*</div>*/}
         </div>
         <div className="col-lg-12 d-flex mt-2">
-          <button type="submit" className="btn btn-success m-auto w-50">
+          <button type="submit" className="btn btn-success m-auto w-50"  onClick={() => {
+            SuccessAlert(); // Show the success alert
+            setTimeout(() => {
+              handleClose(); // Close after the alert
+            }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+          }}>
             Submit
           </button>
         </div>

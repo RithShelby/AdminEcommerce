@@ -9,14 +9,9 @@ const LayoutApp = ({ isDarkMode, setIsDarkMode }) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="container-fluid m-0 p-0 ">
-      <Layout className="">
+      <Layout>
         <Sider
-          className="d-none d-lg-block "
-          style={{
-            height: "1500px",
-            backgroundColor: "#00111c",
-            borderRight: "1px dashed gray",
-          }}
+          style={{backgroundColor : "#222831"}}
           trigger={null}
           collapsible
           collapsed={collapsed}

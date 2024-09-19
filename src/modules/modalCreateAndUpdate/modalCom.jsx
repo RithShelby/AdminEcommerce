@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const ModalComponent = ({ show, onHide, title, bodyModal }) => {
+const ModalComponent = ({ show, handleClose, title, bodyModal }) => {
   return (
     <Modal
       show={show}
-      onHide={onHide}
+      onHide={handleClose}
       className="w-100
     "
     >

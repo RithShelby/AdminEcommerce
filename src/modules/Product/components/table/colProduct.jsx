@@ -2,6 +2,7 @@ import { HiOutlineViewfinderCircle } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import ActionUpdateProduct from "./ActionUpdate";
 import ActionDeleteProduct from "./ActionDelete";
+import ActionCell from "../../../widget/ActionCell";
 
 export const ProductColunm = [
   {
@@ -44,10 +45,7 @@ export const ProductColunm = [
   {
     name: "Action",
     selector: (row) => (
-      <>
-        <ActionUpdateProduct uuid={row.uuid} />
-        <ActionDeleteProduct uuid={row.uuid} />
-      </>
+      <ActionCell/>
     ),
     sortable: true,
     reorder: true,

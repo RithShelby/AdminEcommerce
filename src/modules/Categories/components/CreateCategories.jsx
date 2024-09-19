@@ -10,7 +10,7 @@ const SchemaValidation = Yup.object().shape({
   name: Yup.string().required("Please input category name"),
   description: Yup.string().required("Please input description"),
 });
-const CreateCategories = ({ close }) => {
+const CreateCategories = ({ handleClose }) => {
   const { createCategory, getCategories } = useCatagories();
   const { getProductItem } = useProductItem();
   const { productItemList } = useSelector((state) => state.productItem);
@@ -29,7 +29,7 @@ const CreateCategories = ({ close }) => {
     validationSchema: SchemaValidation,
     onSubmit: (values) => {
       createCategory(values);
-      close(false);
+      handleClose();
     },
   });
   // const select = listCategories.map((item) => {
