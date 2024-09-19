@@ -14,6 +14,7 @@ import ModalCreate from "../modalCreateAndUpdate/modalCom";
 import ModalComponent from "../modalCreateAndUpdate/modalCom";
 import TableGlobal from "../widget/DataTable";
 import { ProductColunm } from "./components/table/colProduct";
+import {FilterComponent} from "../widget/SearchCustom";
 export const ProductContext = createContext();
 const Product = () => {
   const { getProducts, deleteProduct } = useProducts();
@@ -65,33 +66,34 @@ const Product = () => {
       <div className="mx-3 my-5">
         <h2 className="fw-bold">All Products</h2>
         <hr />
-        <div className="row rounded-3 my-3">
-          <div className="col-sm-4  ">
-            <Search
-              value={searchProduct}
-              onChange={handleSearchProduct}
-              placeholder={"Search Product"}
-            />
-          </div>
-          <div className="col-sm-5 ">
-            <SelectData value={selectProduct} onchange={handleSelectProduct}>
-              <option value="">All Categories</option>
-              {listProduct.map((category, index) => (
-                <option key={index} value={category.id}>
-                  {category.category.name}
-                </option>
-              ))}
-            </SelectData>
-          </div>
-          <div className="col-sm-2 m-auto">
-            <Link
-              className="btn btn-dark w-100 py-3"
-              onClick={() => handleShowCreate()}
-            >
-              <FiPlus /> New Product
-            </Link>
-          </div>
-        </div>
+        <FilterComponent onFilter={handleSearchProduct} filterText={searchProduct} create={handleShowCreate} placeholder={"Search Product Here..."}/>
+        {/*<div className="row rounded-3 my-3">*/}
+        {/*  <div className="col-sm-4  ">*/}
+        {/*    <Search*/}
+        {/*      value={searchProduct}*/}
+        {/*      onChange={handleSearchProduct}*/}
+        {/*      placeholder={"Search Product"}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*  <div className="col-sm-5 ">*/}
+        {/*    <SelectData value={selectProduct} onchange={handleSelectProduct}>*/}
+        {/*      <option value="">All Categories</option>*/}
+        {/*      {listProduct.map((category, index) => (*/}
+        {/*        <option key={index} value={category.id}>*/}
+        {/*          {category.category.name}*/}
+        {/*        </option>*/}
+        {/*      ))}*/}
+        {/*    </SelectData>*/}
+        {/*  </div>*/}
+        {/*  <div className="col-sm-2 m-auto">*/}
+        {/*    <Link*/}
+        {/*      className="btn btn-dark w-100 py-3"*/}
+        {/*      onClick={() => handleShowCreate()}*/}
+        {/*    >*/}
+        {/*      <FiPlus /> New Product*/}
+        {/*    </Link>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <TableGlobal columns={ProductColunm} data={filteredItems} />
         {/* <div className="row table-responsive">
           <table className="table table-dark">
@@ -145,15 +147,15 @@ const Product = () => {
         </div> */}
         <ModalComponent
           show={showCreateModal}
-          onHide={handleCloseCreate}
+          handleClose={handleCloseCreate}
           title="Create Product"
-          bodyModal={<CreateProduct />}
+          bodyModal={<CreateProduct handleClose={handleCloseCreate} />}
         />
         <ModalComponent
           show={showUpdateModal}
-          onHide={handleCloseUpdate}
+          handleClose={handleCloseUpdate}
           title="Update Product"
-          bodyModal={<UpdateProduct uuid={selectedProduct} />}
+          bodyModal={<UpdateProduct uuid={selectedProduct} handleClose={handleCloseUpdate} />}
         />
       </div>
     </ProductContext.Provider>

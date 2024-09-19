@@ -1,7 +1,7 @@
 import React from "react";
 import { useUsers } from "../../core/hook";
 
-const Active_InActive = ({ uuid, status }) => {
+const Active_InActive = ({ uuid, status ,onClick}) => {
   const { toggleStatus } = useUsers();
 
   const statusToggler = async (uuid, status) => {
@@ -12,10 +12,11 @@ const Active_InActive = ({ uuid, status }) => {
   return (
     <button
       className={` ${status ? "btn btn-primary fs-6" : "btn btn-danger fs-6"}`}
-      onClick={() =>
-        statusToggler(uuid, {
-          isDeleted: status ? true : false,
-        })
+      onClick={
+        // statusToggler(uuid, {
+        //   isDeleted: status ? true : false,
+        // })
+          onClick
       }
     >
       {status ? "Active" : "Inactive"}

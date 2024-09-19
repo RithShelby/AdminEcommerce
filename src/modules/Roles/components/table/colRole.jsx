@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ActionUpdateRole from "./ActionUpdate";
 import ShowRole from "../ShowRole";
 import PermissionAction from "./PermissionAction";
+import ActionCell from "../../../widget/ActionCell";
 
 export const RoleColumn = [
   {
@@ -32,7 +33,7 @@ export const RoleColumn = [
   },
   {
     name: "Action",
-    selector: (row) => <ActionUpdateRole id={row.id} />,
+    selector: (row) => <ActionCell/>,
     sortable: true,
     reorder: true,
   },

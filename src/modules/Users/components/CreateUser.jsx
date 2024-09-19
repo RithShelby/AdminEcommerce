@@ -4,8 +4,10 @@ import { useUsers } from "../core/hook";
 import { useRoles } from "../../Roles/core/hook";
 import { useSelector } from "react-redux";
 import Select from "react-select";
-const CreateUser = () => {
+import {useSweetAlert} from "../../SweetAlert";
+const CreateUser = ({handleClose}) => {
   const { createUser } = useUsers();
+  const {SuccessAlert} = useSweetAlert();
   const { getRoles } = useRoles();
   const { listRole } = useSelector((state) => state.roles);
   useEffect(() => {
@@ -23,14 +25,15 @@ const CreateUser = () => {
       phone: "",
       roleIds: [],
     },
-    onSubmit: (values) => {
+    onSubmit:  (values) => {
       let roleIds = [];
       if (Array.isArray(values.roleIds)) {
         roleIds = values.roleIds.map((id) => parseInt(id));
       } else if (typeof values.roleIds === "string") {
         roleIds = [parseInt(values.roleIds)];
       }
-      createUser({ ...values, roleIds });
+       createUser({ ...values, roleIds });
+        handleClose();
     },
   });
   console.log(listRole);
@@ -134,18 +137,14 @@ const CreateUser = () => {
                 );
               })}
             </select>
-            {/* <Select
-              value={
-                formik.values.roleIds.length > 0 ? formik.values.roleIds[0] : ""
-              }
-              onChange={(e) => {
-                formik.setFieldValue("roleIds", e);
-              }}
-              options={selectRole}
-            /> */}
           </div>
           <div className="col-lg-12 my-2">
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-success" type="submit" onClick={() => {
+              SuccessAlert(); // Show the success alert
+              setTimeout(() => {
+                handleClose(); // Close after the alert
+              }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+            }}>
               Submit
             </button>
           </div>

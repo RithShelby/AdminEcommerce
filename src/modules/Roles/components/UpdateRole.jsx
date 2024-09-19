@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { useRoles } from "../core/hook";
 import { useSelector } from "react-redux";
 import { useFormik } from "formik";
+import {useSweetAlert} from "../../SweetAlert";
 
-const UpdateRole = ({ id }) => {
+const UpdateRole = ({ id,handleClose }) => {
   const { updateRole } = useRoles();
+  const {SuccessAlert} = useSweetAlert();
   const { listRole } = useSelector((state) => state.roles);
 
   // Find existing role based on id (parsed id)
@@ -18,6 +20,7 @@ const UpdateRole = ({ id }) => {
     },
     onSubmit: (values) => {
       updateRole(id, values); // Pass id instead of id
+      handleClose();
     },
   });
 
@@ -42,7 +45,12 @@ const UpdateRole = ({ id }) => {
             placeholder="Enter code..."
           />
           <div className="d-flex mt-4">
-            <button type="submit" className="btn btn-success m-auto w-50">
+            <button type="submit" className="btn btn-success m-auto w-50"   onClick={() => {
+              SuccessAlert(); // Show the success alert
+              setTimeout(() => {
+                handleClose(); // Close after the alert
+              }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+            }}>
               Update Role
             </button>
           </div>

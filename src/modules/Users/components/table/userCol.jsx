@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ActionUpdate from "./ActionUpdate"; // Corrected import
 import Active_InActive from "./Active&InActive";
 import { HiOutlineViewfinderCircle } from "react-icons/hi2";
+import ActionCell from "../../../widget/ActionCell";
 
 export const Usercolumns = [
   {
@@ -41,16 +42,16 @@ export const Usercolumns = [
     sortable: true,
     reorder: true,
   },
-  {
-    name: "Status",
-    selector: (row) => <Active_InActive uuid={row.uuid} status={row.status} />,
-    sortable: true,
-    reorder: true,
-  },
+  // {
+  //   name: "Status",
+  //   selector: (row) => <Active_InActive  uuid={row.uuid} status={row.status} />,
+  //   sortable: true,
+  //   reorder: true,
+  // },
   {
     name: "View",
     cell: (row) => (
-      <Link to={`/users/${row.uuid}`}>
+      <Link>
         <HiOutlineViewfinderCircle className="fs-5 text-dark icon_hover " />
       </Link>
     ),
@@ -60,7 +61,7 @@ export const Usercolumns = [
   },
   {
     name: "Action",
-    cell: (row) => <ActionUpdate uuid={row.uuid} />,
+    cell: (row) => <ActionCell/>,
     sortable: true,
     reorder: true,
   },

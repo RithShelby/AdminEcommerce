@@ -6,8 +6,10 @@ import { useProductItem } from "../core/hook";
 import { useFileUpload } from "../../file/core/hook";
 import { useCatagories } from "../../Categories/core/hook";
 import Select from "react-select";
-const CreateProductItem = () => {
+import {useSweetAlert} from "../../SweetAlert";
+const CreateProductItem = ({handleClose}) => {
   const { getProductItem, createProductItem } = useProductItem();
+  const {SuccessAlert} = useSweetAlert();
   const { getVariationOption } = useVariOption();
   const { uploadSingleFile } = useFileUpload();
   const { getCategories } = useCatagories();
@@ -60,75 +62,80 @@ const CreateProductItem = () => {
         <div className="row mx-5">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <Select
-              className="w-100 m-auto"
-              options={selectCategory}
-              name="productId"
-              value={listCategories.find(
-                (option) => option.value === formik.values.productId
-              )}
-              onChange={(selectedOption) =>
-                formik.setFieldValue(
-                  "productId",
-                  selectedOption ? selectedOption.value : null
-                )
-              }
-              placeholder="Select Product ID"
+                className="w-100 m-auto"
+                options={selectCategory}
+                name="productId"
+                value={listCategories.find(
+                    (option) => option.value === formik.values.productId
+                )}
+                onChange={(selectedOption) =>
+                    formik.setFieldValue(
+                        "productId",
+                        selectedOption ? selectedOption.value : null
+                    )
+                }
+                placeholder="Select Product ID"
             />
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12">
             {" "}
             <input
-              name="quantity"
-              value={formik.values.quantity}
-              className="form-control py-3 bg-light my-3 "
-              type="number"
-              placeholder="Product Quantity"
-              onChange={formik.handleChange}
+                name="quantity"
+                value={formik.values.quantity}
+                className="form-control py-3 bg-light my-3 "
+                type="number"
+                placeholder="Product Quantity"
+                onChange={formik.handleChange}
             />
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12">
             {" "}
             <input
-              name="price"
-              value={formik.values.price}
-              className="form-control py-3 bg-light"
-              type="number"
-              placeholder="Product Price"
-              onChange={formik.handleChange}
+                name="price"
+                value={formik.values.price}
+                className="form-control py-3 bg-light"
+                type="number"
+                placeholder="Product Price"
+                onChange={formik.handleChange}
             />
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12">
             <input
-              type="file"
-              name="image"
-              className="form-control py-3 my-3"
-              value={formik.values.image}
-              onChange={(e) => {
-                formik.handleChange(e);
-                onFileChange(e);
-              }}
+                type="file"
+                name="image"
+                className="form-control py-3 my-3"
+                value={formik.values.image}
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  onFileChange(e);
+                }}
             />
           </div>
           {formik.values.variationOptions.map((optionItem, index) => (
-            <Select
-              key={index}
-              className="w-100 m-auto my-2"
-              options={selectVariation}
-              name={`variationOptions[${index}].variationOptionId`}
-              value={selectVariation.find(
-                (option) => option.value === optionItem.variationOptionId
-              )}
-              onChange={(selectedOption) =>
-                formik.setFieldValue(
-                  `variationOptions[${index}].variationOptionId`,
-                  selectedOption ? selectedOption.value : null
-                )
-              }
-              placeholder="Select Variation Option"
-            />
+              <Select
+                  key={index}
+                  className="w-100 m-auto my-2"
+                  options={selectVariation}
+                  name={`variationOptions[${index}].variationOptionId`}
+                  value={selectVariation.find(
+                      (option) => option.value === optionItem.variationOptionId
+                  )}
+                  onChange={(selectedOption) =>
+                      formik.setFieldValue(
+                          `variationOptions[${index}].variationOptionId`,
+                          selectedOption ? selectedOption.value : null
+                      )
+                  }
+                  placeholder="Select Variation Option"
+              />
           ))}
 
-          <button type="submit" className="btn bg-success-subtle w-100 mt-4">
+          <button className="btn btn-success" type="submit" onClick={() => {
+            SuccessAlert(); // Show the success alert
+            setTimeout(() => {
+              handleClose(); // Close after the alert
+            }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+          }}>
             Submit
           </button>
         </div>

@@ -1,9 +1,11 @@
 import React from "react";
 import { useRoles } from "../core/hook";
 import { useFormik } from "formik";
+import {useSweetAlert} from "../../SweetAlert";
 
-const CreateRole = () => {
+const CreateRole = ({handleClose}) => {
   const { createRoles } = useRoles();
+  const {SuccessAlert} = useSweetAlert();
   const createFormik = useFormik({
     initialValues: {
       name: "",
@@ -11,6 +13,7 @@ const CreateRole = () => {
     },
     onSubmit: (values) => {
       createRoles(values);
+      handleClose();
     },
   });
   return (
@@ -34,7 +37,12 @@ const CreateRole = () => {
             placeholder="Enter code..."
           />
           <div className="col-lg-12 d-flex mt-2">
-            <button className="btn btn-success m-auto w-50">Submit</button>
+            <button className="btn btn-success m-auto w-50"   onClick={() => {
+              SuccessAlert(); // Show the success alert
+              setTimeout(() => {
+                handleClose(); // Close after the alert
+              }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+            }}>Submit</button>
           </div>
         </div>
       </form>

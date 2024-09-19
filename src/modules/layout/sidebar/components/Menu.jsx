@@ -1,7 +1,7 @@
 import { Menu } from "antd";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import LogoKilo from "../../../../assets/image/KiloIT-Logo-Final-01.png";
+import newLogo from "../../../../assets/image//newLogo.png";
 import { items } from "../../../constants/SidebarData";
 import {
   HasPermission,
@@ -14,12 +14,11 @@ const MenuSide = () => {
   const onClick = (e) => {
     console.log("click ", e);
   };
-  const classActive = (path) => {
-    if (location.pathname === path) return "text-decoration-underline";
-    return "";
-  };
+  const menuActive = (path)=>{
+    if (location.pathname === path) return "text-dark bg-light";
+  }
   return (
-    <Menu
+    <Menu style={{backgroundColor : "#222831"}}
       onClick={onClick}
       defaultSelectedKeys={["1"]}
       defaultOpenKeys={["sub1"]}
@@ -27,18 +26,16 @@ const MenuSide = () => {
       theme="dark"
       className="d-flex flex-column"
     >
-      <img className="w-50 m-auto" src={LogoKilo} alt="" />
-      {items.map((item, index) => {
+      <img className="w-50 m-auto" src={newLogo} alt="" />
+      {items.map(         (item, index) => {
         const { key, title, icon, path, childrenMenu, permission } = item;
         if (childrenMenu) {
           return (
             <SubMenu key={key} icon={icon} title={title}>
               {childrenMenu.map((child) => (
-                <Menu.Item>
-                  <Link
-                    className={`nav-link ${classActive(child.path)}`}
-                    to={child.path}
-                  >
+                <Menu.Item className={`nav-link ${menuActive(child.path)}`}>
+                  <Link className = {"nav-link"}
+                    to={child.path}>
                     {child.title}
                   </Link>
                 </Menu.Item>
@@ -47,8 +44,8 @@ const MenuSide = () => {
           );
         }
         return (
-          <Menu.Item icon={icon}>
-            <Link className={`nav-link ${classActive(path)}`} to={path}>
+          <Menu.Item icon={icon} className={`nav-link ${menuActive(path)}`} >
+            <Link className={"nav-link"} to={path}>
               {title}
             </Link>
           </Menu.Item>

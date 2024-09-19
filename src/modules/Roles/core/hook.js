@@ -99,7 +99,7 @@ const useRoles = () => {
     // onTogglePermissions,
     // onUpdatePermission,
     // getTogglePermission,
-    getDeleteRole,
+    // getDeleteRole,
   };
 };
 export { useRoles };

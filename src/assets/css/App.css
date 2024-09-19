@@ -5,7 +5,7 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden !important;
 }
-/* mobile hover */
+  /* mobile hover */
 .mobile-hover{
   transition:  0.3s ease-in-out;
 }
@@ -18,19 +18,18 @@ body {
 /* night mode */
 .light-mode {
   background-color: #f8f9fa;
-  color: dark;
+  color: black;
 }
 
-.dark-mode  {
-  transition: all 1s;
-  background-color:#00111c;
-  color: white;
-}
-.dark-mode Button {
-  transition: all 1s;
-  
-  color: white;
-}
+/*.dark-mode  {*/
+/*  transition: all 1s;*/
+/*  color: white;*/
+/*  background-color: #222831;*/
+/*}*/
+/*.dark-mode Button {*/
+/*  transition: all 1s;*/
+/*  color: white;*/
+/*}*/
 
 button {
   padding: 10px 20px;
@@ -257,7 +256,7 @@ button {
 .card {
   font-size: 1em;
   overflow: hidden;
-  padding: 5;
+  padding: 5px;
   border: none;
   border-radius: 0.28571429rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
