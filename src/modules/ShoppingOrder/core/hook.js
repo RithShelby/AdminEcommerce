@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { setLoading } from "../../Roles/core/roleSlice";
 import {
   reGetShoppingOrder,
-  reqCreateShoppingOrder,
   reqCreateShoppingOrderByCart,
   reqDeleteShoppingOrder,
   reqUpdateShoppingOrder,
@@ -18,7 +17,6 @@ const useShoppingOrder = () => {
     reGetShoppingOrder()
       .then((respone) => {
         dispatch(setLoading(false));
-        console.log(respone.data.data);
         dispatch(setListShoppingOrder(respone.data.data));
       })
       .catch((err) => {
@@ -29,6 +27,7 @@ const useShoppingOrder = () => {
     return reqCreateShoppingOrderByCart(payload)
       .then((res) => {
         alert("Create Shopping Order success");
+        getShoppingOrder()
         // navigate("/shopping-order");
       })
       .catch((err) => alert("error"));
@@ -55,9 +54,9 @@ const useShoppingOrder = () => {
 
   return {
     getShoppingOrder,
-    createShoppingOrderByCart,
-    deleteShoppingOrder,
-    updateShoppingOrder,
+    // createShoppingOrderByCart,
+    // deleteShoppingOrder,
+    // updateShoppingOrder,
   };
 };
 

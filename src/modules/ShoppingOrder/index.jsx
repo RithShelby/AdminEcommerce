@@ -13,8 +13,7 @@ const ShoppingOrder = () => {
   const { getShoppingOrder, deleteShoppingOrder } = useShoppingOrder();
   const { listShoppingOrder } = useSelector((state) => state.shoppingOrders);
   console.log(listShoppingOrder)
-  const { loadingList } = useSelector((state) => state.loading);
-
+  console.log(listShoppingOrder)
   const [showCreateShopOrder, setCreateShopOrder] = useState(false);
   const [showUpdateShopOrder, setUpdateShopOrder] = useState(false);
   const [catchShopOrder, setCatchShopOrder] = useState(null);
@@ -31,21 +30,19 @@ const ShoppingOrder = () => {
   const handleCloseUpdateShopOrder = () => {
     setUpdateShopOrder(false);
   };
-  // console.log(listShoppingOrder);
   useEffect(() => {
     getShoppingOrder();
   }, []);
   const handleDelete = (id) => {
     deleteShoppingOrder(id);
   };
-  if (loadingList) return <Loading />;
   return (
       <ShopOrderContext.Provider value={{}}>
         <div className=" mt-5 mx-2 ">
           <div>
             <h2 className="fw-bold">Shopping Order By User</h2>
             <hr/>
-            <FilterComponent create={handleShowCreateShopOrder}/>
+            <FilterComponent create={handleShowCreateShopOrder} search={false}/>
           </div>
           <TableGlobal data={listShoppingOrder} columns={ShopOrderColumn}/>
           <ModalComponent
@@ -60,8 +57,6 @@ const ShoppingOrder = () => {
               title="Update Shop Order"
               bodyModal={<UpdateShopOrder id={catchShopOrder}/>}
           />
-          {/*  /!* <CreateShopOrder /> *!/*/}
-          {/*</div>*/}
         </div>
       </ShopOrderContext.Provider>
 

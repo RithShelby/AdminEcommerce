@@ -14,6 +14,7 @@ export const FilterComponent = ({
                                     value,
                                     onChange,
                                     options,
+                                    search = true,
                                     dropdown = false,
                                     optionLabel
                                 }) => {
@@ -23,12 +24,12 @@ export const FilterComponent = ({
         </React.Fragment>
     );
 
-    const centerContent = (
+    const centerContent = search? (
         <IconField iconPosition="left">
             <InputIcon className="pi pi-search" />
             <InputText value={filterText} onChange={onFilter} placeholder={placeholder} />
         </IconField>
-    );
+    ):null;
 
     // Conditionally render endContent only if value, onChange, and options are provided
     const endContent = dropdown ?

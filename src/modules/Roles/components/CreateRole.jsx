@@ -38,7 +38,7 @@ const CreateRole = ({handleClose}) => {
           />
           <div className="col-lg-12 d-flex mt-2">
             <button className="btn btn-success m-auto w-50"   onClick={() => {
-              SuccessAlert(); // Show the success alert
+              SuccessAlert({title : "Create Role Success!",text : "Thank You!"}); // Show the success alert
               setTimeout(() => {
                 handleClose(); // Close after the alert
               }, 1000); // Adjust the delay (1000ms = 1 second) as needed

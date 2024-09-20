@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../core/hook";
+import {useSweetAlert} from "../../SweetAlert";
 
 const Login = () => {
+  const {SuccessAlert} = useSweetAlert();
   const [payload, setPayload] = useState({
-    username: "admin",
-    password: "123",
+    username: "JohnAdmin2700",
+    password: "12345",
   });
 
   const { onLogin } = useAuth();
@@ -20,6 +22,9 @@ const Login = () => {
     e.preventDefault();
     console.log(payload);
     onLogin(payload);
+    SuccessAlert(
+        {title : "Login Success!",text :"Welcome Back Admin✌️"},
+    );
   };
 
   return (
@@ -48,6 +53,7 @@ const Login = () => {
                     name="username"
                     onChange={handleChange}
                     placeholder="Username..."
+                    value={payload.username}
                   />
                 </div>
                 <div className="form-outline mb-4">
@@ -61,6 +67,7 @@ const Login = () => {
                     name="password"
                     onChange={handleChange}
                     placeholder="Password..."
+                    value={payload.password}
                   />
                 </div>
                 {/* Checkbox */}

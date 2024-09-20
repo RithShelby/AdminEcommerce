@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useProductItem } from "../../ProductItem/core/hook";
 import Select from "react-select";
+import {useSweetAlert} from "../../SweetAlert";
 // Define the validation schema using Yup
 const SchemaValidation = Yup.object().shape({
   name: Yup.string().required("Please input category name"),
   description: Yup.string().required("Please input description"),
 });
 const CreateCategories = ({ handleClose }) => {
+  const {SuccessAlert} = useSweetAlert();
   const { createCategory, getCategories } = useCatagories();
   const { getProductItem } = useProductItem();
   const { productItemList } = useSelector((state) => state.productItem);
@@ -45,29 +47,29 @@ const CreateCategories = ({ handleClose }) => {
         <div className="row">
           <div className="col-lg-12">
             <input
-              type="text"
-              value={formik.values.name}
-              name="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`form-control w-100 my-4 m-auto py-3 ${
-                formik.touched.name && formik.errors.name ? "is-invalid" : ""
-              }`}
-              placeholder="Category name..."
+                type="text"
+                value={formik.values.name}
+                name="name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`form-control w-100 my-4 m-auto py-3 ${
+                    formik.touched.name && formik.errors.name ? "is-invalid" : ""
+                }`}
+                placeholder="Category name..."
             />
 
             <input
-              type="text"
-              value={formik.values.description}
-              name="description"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`form-control w-100 my-4 m-auto py-3 ${
-                formik.touched.description && formik.errors.description
-                  ? "is-invalid"
-                  : ""
-              }`}
-              placeholder="Description..."
+                type="text"
+                value={formik.values.description}
+                name="description"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`form-control w-100 my-4 m-auto py-3 ${
+                    formik.touched.description && formik.errors.description
+                        ? "is-invalid"
+                        : ""
+                }`}
+                placeholder="Description..."
             />
             {/* <input
               type="text"
@@ -86,25 +88,28 @@ const CreateCategories = ({ handleClose }) => {
               options={select}
             /> */}
             <select
-              name="parentId"
-              className="form-select py-3 w-75 m-auto"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.parentId}
+                name="parentId"
+                className="form-select py-3 w-75 m-auto"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.parentId}
             >
               <option value="">Select Category ID</option>
               {listCategories.map((item) => (
-                <option key={item.category.id} value={item.category.id}>
-                  {item.category.name}
-                </option>
+                  <option key={item.category.id} value={item.category.id}>
+                    {item.category.name}
+                  </option>
               ))}
             </select>
           </div>
-          <div className="col-lg-12 d-flex mt-2">
-            <button type="submit" className="btn btn-success m-auto w-50">
-              Submit
-            </button>
-          </div>
+          <button className="btn btn-success" type="submit" onClick={() => {
+            SuccessAlert({title: "Create Category Success!", text: "Thank You!"}); // Show the success alert
+            setTimeout(() => {
+              handleClose(); // Close after the alert
+            }, 1000); // Adjust the delay (1000ms = 1 second) as needed
+          }}>
+            Submit
+          </button>
         </div>
       </form>
     </div>

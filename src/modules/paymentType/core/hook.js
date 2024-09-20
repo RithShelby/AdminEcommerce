@@ -54,9 +54,9 @@ const usePaymentType = () => {
   };
   return {
     getPaymentType,
-    getCreatePaymentType,
-    getUpdatePaymentType,
-    getDeletePaymentType,
+    // getCreatePaymentType,
+    // getUpdatePaymentType,
+    // getDeletePaymentType,
   };
 };
 

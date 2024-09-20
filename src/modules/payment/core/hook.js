@@ -53,12 +53,16 @@ const usePayment = () => {
     return reqDeletePayment(id)
       .then(() => {
         alert("Delete Payment successfully");
-        naviate("/payments");
-        window.location.href = "/payments";
+        naviate("/payment");
       })
       .catch((err) => alert("Invalid payment"));
   };
-  return { getPayments, createPayment, getUpdatePayment, getDeletePayment };
+  return {
+      getPayments,
+      // createPayment,
+      // getUpdatePayment,
+      getDeletePayment
+  };
 };
 
 export { usePayment };
