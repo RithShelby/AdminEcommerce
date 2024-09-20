@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 
 
 const useSweetAlert = () => {
-   const SuccessAlert = ()=>{
+   const SuccessAlert = ({title,text})=>{
        Swal.fire({
-           title: "Successfully!",
-           text: "You clicked the button!",
+           title: title,
+           text: text,
            icon: "success"
        });
    };

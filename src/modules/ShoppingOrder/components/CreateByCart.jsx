@@ -50,7 +50,7 @@ const CreateByCart = ({handleClose}) => {
             onChange={formik.handleChange}
         />
         <button className="btn btn-success" type="submit" onClick={() => {
-          SuccessAlert(); // Show the success alert
+          SuccessAlert({title : "Create ShopOrder Success!", text : "Thank You!"}); // Show the success alert
           setTimeout(() => {
             handleClose(); // Close after the alert
           }, 1000); // Adjust the delay (1000ms = 1 second) as needed

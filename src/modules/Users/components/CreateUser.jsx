@@ -140,7 +140,7 @@ const CreateUser = ({handleClose}) => {
           </div>
           <div className="col-lg-12 my-2">
             <button className="btn btn-success" type="submit" onClick={() => {
-              SuccessAlert(); // Show the success alert
+              SuccessAlert({title : "Create Success!",text : "Thank you"}); // Show the success alert
               setTimeout(() => {
                 handleClose(); // Close after the alert
               }, 1000); // Adjust the delay (1000ms = 1 second) as needed

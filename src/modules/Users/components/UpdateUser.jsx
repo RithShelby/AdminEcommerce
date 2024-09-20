@@ -143,12 +143,7 @@ const UpdateUser = ({ uuid ,handleClose}) => {
               options={selectRole}
             /> */}
           </div>
-          <button className="btn btn-success" type="submit" onClick={() => {
-            SuccessAlert(); // Show the success alert
-            setTimeout(() => {
-              handleClose(); // Close after the alert
-            }, 1000); // Adjust the delay (1000ms = 1 second) as needed
-          }}>
+          <button className="btn btn-success" type="submit" >
             Submit
           </button>
         </div>

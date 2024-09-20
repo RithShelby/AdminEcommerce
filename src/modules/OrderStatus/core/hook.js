@@ -35,7 +35,10 @@ const useOrderStatus = () =>{
         }).catch((err) => console.error(err));
     };
     return{
-        getOrderStatus, createOrderStatus, updateOrderStatus, deleteOrderStatus
+        getOrderStatus,
+        // createOrderStatus,
+        // updateOrderStatus,
+        // deleteOrderStatus
     };
 };
 export { useOrderStatus };

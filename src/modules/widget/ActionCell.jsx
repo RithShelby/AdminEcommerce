@@ -8,7 +8,7 @@ const ActionCell = ({ item, onEdit, onDelete }) => {
     const {SuccessAlert,ConfirmDelete} = useSweetAlert();
     return (
         <div className="d-flex">
-            <Link className="nav-link" onClick={() => SuccessAlert()}>
+            <Link className="nav-link" onClick={() => SuccessAlert({title : "Update Success!", text : "Thank You"})}>
                 <CiEdit className="fs-3" />
             </Link>
             <Link className="nav-link" onClick={() => ConfirmDelete()}>
