@@ -43,7 +43,7 @@ const OrderStatus = () => {
       <div className="">
         <h2 className="fw-bold">Order Status</h2>
         <hr/>
-        <FilterComponent create={handleShowCreateStatus}/>
+        <FilterComponent create={handleShowCreateStatus} search={false}/>
         <TableGlobal data={listOrderStatus} columns={columnOrderStatus}/>
       </div>
         <ModalComponent

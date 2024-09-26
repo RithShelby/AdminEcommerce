@@ -1,9 +1,9 @@
 
 
 body {
-  margin: 0;
+  /* margin: 0; */
   font-family: Arial, sans-serif;
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
 }
   /* mobile hover */
 .mobile-hover{
@@ -21,15 +21,13 @@ body {
   color: black;
 }
 
-/*.dark-mode  {*/
-/*  transition: all 1s;*/
-/*  color: white;*/
-/*  background-color: #222831;*/
-/*}*/
-/*.dark-mode Button {*/
-/*  transition: all 1s;*/
-/*  color: white;*/
-/*}*/
+.dark-mode  {
+  color: white;
+  background-color: #222831;
+}
+.dark-mode Button {
+ color: white;
+}
 
 button {
   padding: 10px 20px;
@@ -275,12 +273,12 @@ button {
 }
 
 /* upload image */
-.uploadImage {
-  width: 400px;
-  height: 300px;
-  border-radius: 5px;
-  border: 3px dashed black;
-}
+/*.uploadImage {*/
+/*  width: 400px;*/
+/*  height: 300px;*/
+/*  border-radius: 5px;*/
+/*  border: 3px dashed black;*/
+/*}*/
 /* Toggle night mode */
 /* The switch - the box around the slider */
 .switch {
@@ -339,4 +337,32 @@ input:checked+.slider:before {
   background: #303136;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+.custom-layout{
+  padding:50px 0px;
+  transition: 0.3s;
+  width: 100%;
+}
+.custom-layout-collapsed{
+  padding-left: 70px;
+}
+.custom-layout-expanded{
+  padding-left: 190px;
+}
+.custom-menu {
+  background-color: #222831;
+}
+
+.custom-header {
+  transition: 0.3s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+}
+.custom-header-collapsed{
+  margin-left: 80px;
+}
+.custom-header-expanded{
+  margin-left: 200px;
+}
+.custom-content{
+  margin: 90px 0px;
 }

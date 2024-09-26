@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import Login from "./modules/auth/components/Login";
 import NotFoundPage from "./modules/error";
 import React, { useState } from "react";
-import LayoutApp from "./modules/layout/sidebar/Layout";
+import LayoutApp from "./modules/layout/Layout";
 import { routs } from "./modules/constants/router";
 import {PrimeReactProvider} from "primereact/api";
 function App() {

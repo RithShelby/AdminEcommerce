@@ -18,16 +18,16 @@ const MenuSide = () => {
     if (location.pathname === path) return "text-dark bg-light";
   }
   return (
-    <Menu style={{backgroundColor : "#222831"}}
+    <Menu
       onClick={onClick}
       defaultSelectedKeys={["1"]}
       defaultOpenKeys={["sub1"]}
       mode="inline"
       theme="dark"
-      className="d-flex flex-column"
+      className="border-end border-secondary h-100 custom-menu"
     >
-      <img className="w-50 m-auto" src={newLogo} alt="" />
-      {items.map(         (item, index) => {
+      <img className="w-50 d-flex m-auto" src={newLogo} alt="" />
+      {items.map((item, index) => {
         const { key, title, icon, path, childrenMenu, permission } = item;
         if (childrenMenu) {
           return (

@@ -1,26 +1,14 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { LuUsers } from "react-icons/lu";
-import { AiOutlineNotification } from "react-icons/ai";
-import { SlLogout } from "react-icons/sl";
-import { GrUserAdmin } from "react-icons/gr";
+import React from "react";
 import CurrentDate from "../currentDate/date";
-import { Button, message } from "antd";
+import { Button} from "antd";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa";
-import { RiAdminLine } from "react-icons/ri";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { MenuCustom } from "../../widget/Menu";
+import { Settings } from "./Setting";
 
-const Headerr = ({ collapsed, setCollapsed, isDarkMode, toggleMode }) => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: "success",
-      content: "Null Notification, Enjoy your works ❤️",
-    });
-  };
+const Header = ({ collapsed, setCollapsed, isDarkMode, toggleMode }) => {
   return (
-    <div className="d-flex justify-content-between mt-3">
+    <div className={`${isDarkMode  ? "dark-mode" : "light-mode"} ${collapsed ? 'custom-header-collapsed' : 'custom-header-expanded'} d-flex justify-content-between py-3 custom-header fixed-top` }>
       <div className="d-flex align-items-center">
         {" "}
         <Button
@@ -36,50 +24,16 @@ const Headerr = ({ collapsed, setCollapsed, isDarkMode, toggleMode }) => {
         />
         <CurrentDate />
       </div>
-      <div className="d-flex mx-3 align-items-center">
+      <div className="d-flex align-items-center">
         <label className="switch border border-3 rounded-5 ">
           <input type="checkbox" onClick={toggleMode} />
           <span className="slider"></span>
         </label>
-        <div>
-          {contextHolder}
-          <IoIosNotificationsOutline className="fs-3 mx-2" onClick={success} />
-        </div>
-        <div className="dropdown-center" style={{ cursor: "pointer" }}>
-          <RiAdminLine
-            className="fs-4"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          />
-          <ul className="dropdown-menu">
-            <p className="fw-bold ms-3">Setting</p>
-            <hr />
-            <li>
-              <Link
-                className="dropdown-item bg-white text-dark"
-                to="/admin-profile"
-              >
-                <GrUserAdmin className="fs-4 me-2" />
-                Admin Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="dropdown-item bg-white text-dark"
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  window.location.reload();
-                }}
-              >
-                <SlLogout className="fs-4 me-2" />
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <div>{/* Alert Something*/}</div>
+        <MenuCustom MenuItem={Settings} />
       </div>
     </div>
   );
 };
 
-export default Headerr;
+export default Header;
