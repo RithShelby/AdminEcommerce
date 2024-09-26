@@ -1,13 +1,15 @@
-import Doughnut from "./dashboard/doughnut";
 import React, { useEffect } from "react";
 import { FcBusiness, FcBusinessContact } from "react-icons/fc";
 import { FaShoppingCart } from "react-icons/fa";
 import { SiCashapp } from "react-icons/si";
-import BarChart from "./dashboard/BarChart";
 import { useSelector } from "react-redux";
 import { useUsers } from "../Users/core/hook";
 import { useShoppingOrder } from "../ShoppingOrder/core/hook";
 import { useProductItem } from "../ProductItem/core/hook";
+import PieChartDemo from "./dashboard/PieChart";
+import VerticalBarDemo from "./dashboard/VerticalBar";
+import HorizontalBarDemo from "./dashboard/HirizonalBar";
+import RadarDemo from "./dashboard/RadarChart";
 
 const Overview = () => {
   const { getUsers } = useUsers();
@@ -26,7 +28,7 @@ const Overview = () => {
   return (
     <div className="row mx-3 mt-5">
       <div className="col-lg-12 mb-5">
-        <h2 className="fw-bold">Overview</h2>
+        <p className="fw-bold fs-4">Hi, Welcome back 👋</p>
       </div>
       <div className="col-lg-3">
         <div className="card border border-0 rounded-5  ">
@@ -83,13 +85,21 @@ const Overview = () => {
           </div>
         </div>
       </div>
-
-      <div className="col-md-5 col-md-6 col-sm-12 rounded-5 mt-5   ">
-        <BarChart />
+      <div className="row p-4">
+        <div className="col-lg-4">
+          <PieChartDemo />
+        </div>
+        <div className="col-lg-8">
+          <VerticalBarDemo />
+        </div>
       </div>
-
-      <div className="col-md-6 col-md-6 col-sm-12 rounded-5 mt-5 px-5 ">
-        <Doughnut />
+      <div className="row p-4">
+        <div className="col-lg-8">
+          <HorizontalBarDemo />
+        </div>
+        <div className="col-lg-4">
+          <RadarDemo/>
+        </div>
       </div>
     </div>
   );

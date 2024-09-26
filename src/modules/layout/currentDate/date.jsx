@@ -18,7 +18,7 @@ const CurrentDate = () => {
       <p className="fw-bold fs-5 ms-3">Current Date and Time</p>
       <div className="d-flex  justify-content-center ">
         {" "}
-        <CiTimer className="fs-5 me-3" />
+        <CiTimer className="fs-5 me-3 " />
         <p>{currentDate.toLocaleString()}</p>
       </div>
     </div>

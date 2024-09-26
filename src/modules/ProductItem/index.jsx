@@ -14,7 +14,7 @@ export const ProductItemContext = createContext();
 const ProductItem = () => {
   const { getProductItem } = useProductItem();
   const { productItemList } = useSelector((state) => state.productItem);
-
+  console.log(productItemList)
   const options = useMemo(() => [
     { id: "All", name: "All Category" },
     ...productItemList.map(item => ({
@@ -40,10 +40,11 @@ const ProductItem = () => {
   const filteredItems = useMemo(() => {
     return productItemList.filter((item) => {
       const matchesSearch = item.product.name.toLowerCase().includes(searchName.toLowerCase());
+      console.log(matchesSearch)
       const matchesCategory = selectedCategory === "All" || item.product.category.name === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [productItemList, searchName, selectedCategory]);
+  }, [searchName]);
 
   useEffect(() => {
     getProductItem();

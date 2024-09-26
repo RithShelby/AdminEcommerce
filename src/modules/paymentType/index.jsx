@@ -39,8 +39,8 @@ const PaymentType = () => {
       <div className="">
         <h2 className="fw-bold">Payment Type</h2>
         <hr/>
-        <FilterComponent create={handleShowCreatePY}/>
-        <TableGlobal data={paymentTypeList} columns={columnPaymentType}/>
+        <FilterComponent create={handleShowCreatePY} search={false}/>
+        <TableGlobal data={paymentTypeList} columns={columnPaymentType} />
       </div>
         <ModalComponent
           show={showCreatePaymentType}
