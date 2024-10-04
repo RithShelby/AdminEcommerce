@@ -16,18 +16,18 @@ body {
   color: blue;
 }
 /* night mode */
-.light-mode {
-  background-color: #f8f9fa;
-  color: black;
-}
+/*.light-mode {*/
+/*  background-color: #f8f9fa;*/
+/*  color: black;*/
+/*}*/
 
-.dark-mode  {
-  color: white;
-  background-color: #222831;
-}
-.dark-mode Button {
- color: white;
-}
+/*.dark-mode  {*/
+/*  color: white;*/
+/*  background-color: #222831;*/
+/*}*/
+/*.dark-mode Button {*/
+/* color: white;*/
+/*}*/
 
 button {
   padding: 10px 20px;
@@ -355,7 +355,8 @@ input:checked+.slider:before {
 
 .custom-header {
   transition: 0.3s;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #f8f9fa;
 }
 .custom-header-collapsed{
   margin-left: 80px;
