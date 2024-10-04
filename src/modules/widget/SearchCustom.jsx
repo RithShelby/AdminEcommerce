@@ -40,7 +40,7 @@ export const FilterComponent = ({
                 options={options}
                 optionLabel={optionLabel}
                 placeholder="Select Here"
-                className="w-full md:w-14rem"
+
             />
         ) : null;
 

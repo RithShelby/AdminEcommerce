@@ -38,8 +38,8 @@ const LayoutApp = ({ isDarkMode, setIsDarkMode }) => {
             />
 
             />
-            <Layout className={`${isDarkMode ? "dark-mode" : "light-mode"} ${collapsed ? 'custom-layout-collapsed':'custom-layout-expanded'} custom-layout`}>
-                <Content  className={`${isDarkMode ? "dark-mode" : "light-mode"} custom-layout`}>
+            <Layout className={`${collapsed ? 'custom-layout-collapsed':'custom-layout-expanded'} custom-layout`}>
+                <Content className={`custom-layout`}>
                     <Outlet/>
                 </Content>
             </Layout>

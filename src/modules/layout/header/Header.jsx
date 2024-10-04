@@ -8,7 +8,7 @@ import { Settings } from "./Setting";
 
 const Header = ({ collapsed, setCollapsed, isDarkMode, toggleMode }) => {
   return (
-    <div className={`${isDarkMode  ? "dark-mode" : "light-mode"} ${collapsed ? 'custom-header-collapsed' : 'custom-header-expanded'} d-flex justify-content-between py-3 custom-header fixed-top` }>
+    <div className={`${collapsed ? 'custom-header-collapsed' : 'custom-header-expanded'} d-flex justify-content-between py-3 custom-header fixed-top` }>
       <div className="d-flex align-items-center">
         {" "}
         <Button
